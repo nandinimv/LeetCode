@@ -1,5 +1,10 @@
-SELECT customers.name as customers
-FROM customers 
-LEFT JOIN orders 
-ON customers.id = orders .customerId
-where orders.customerId is null;
+
+WITH neverorder AS (
+    SELECT customers.name AS customers
+    FROM customers
+    LEFT JOIN orders
+        ON customers.id = orders.customerid
+    WHERE orders.customerid IS NULL
+)
+SELECT *
+FROM neverorder;
